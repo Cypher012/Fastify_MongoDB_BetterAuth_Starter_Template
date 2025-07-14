@@ -1,5 +1,5 @@
 {
-  "name": "book_review_app",
+  "name": "fastify_mongodb_betterauth_starter_template",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
