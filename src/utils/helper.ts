@@ -1,14 +1,17 @@
 import { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify';
-import { auth } from './auth.js';
-import FastifyBetterAuth, {
-  type FastifyBetterAuthOptions,
-} from 'fastify-better-auth';
+import { createAuth } from './auth.js';
+
+let auth: ReturnType<typeof createAuth>;
 
 export async function handleAuthRequest(
   request: FastifyRequest,
   reply: FastifyReply,
   fastify: FastifyInstance
 ) {
+  if (!auth) {
+    auth = createAuth();
+  }
+
   try {
     // Construct request URL
     const url = new URL(request.url, `http://${request.headers.host}`);

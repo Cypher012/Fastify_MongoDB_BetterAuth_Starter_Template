@@ -1,9 +1,16 @@
 import { FastifyInstance } from 'fastify';
 import fastifyCors from '@fastify/cors';
 import fastifyCookie from '@fastify/cookie';
-import { auth } from '../utils/auth.js';
+import { createAuth } from '../utils/auth.js';
+
+let auth: ReturnType<typeof createAuth>;
 
 export async function registerPlugins(fastify: FastifyInstance): Promise<void> {
+  // Initialize auth after DB connection is established
+  if (!auth) {
+    auth = createAuth();
+  }
+
   // Register cookie plugin first (required for better-auth)
   await fastify.register(fastifyCookie);
   await fastify.register(fastifyCors, {
