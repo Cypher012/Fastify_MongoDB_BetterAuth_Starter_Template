@@ -95,6 +95,9 @@ async function main(): Promise<void> {
     fastify.log.info(
       `Server running on http://${process.env.HOST}:${process.env.PORT}`
     );
+    fastify.log.info(
+        `Mongo Express running on http://${process.env.HOST}:8081`
+    );
   } catch (error) {
     console.error('Failed to start server:', error);
     process.exit(1);
