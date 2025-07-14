@@ -99,7 +99,8 @@ docker compose up -d
 ## API Documentation
 
 - **Swagger UI**: [http://localhost:8000/documentation](http://localhost:8000/documentation)
-- **Scalar API Reference**: [http://localhost:8000/api/reference](http://localhost:8000/api/reference)
+- **Scalar API Reference**: [http://localhost:8000/api/auth/reference](http://localhost:8000/api/auth/reference)
+- **Scalar BetterAuth API Reference**: [http://localhost:8000/api/auth/reference](http://localhost:8000/api/auth/reference)
 
 ### Main Endpoints
 
@@ -124,6 +125,7 @@ docker compose up -d
 - `POST /api/auth/login` — Login
 - `GET /api/auth/session` — Get current session
 - `POST /api/auth/logout` — Logout
+- Many more on the Scalar BetterAuth API documentation
 
 > **Note:** All `POST` endpoints (except `/api/auth/*`) require authentication via BetterAuth.
 
@@ -138,7 +140,7 @@ docker compose up -d
 
 **Example Auth Flow:**
 
-1. Register or login via `/api/auth/register` or `/api/auth/login`.
+1. Register or login via `/api/auth/sign-up/email` or `/api/auth/sign-in/email`.
 2. Use the session cookie for authenticated requests to protected endpoints.
 
 ---

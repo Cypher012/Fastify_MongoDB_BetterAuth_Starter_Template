@@ -25,7 +25,7 @@ export async function registerPlugins(fastify: FastifyInstance): Promise<void> {
 
   fastify.addHook('preHandler', async (request, reply) => {
     // Skip authentication for auth routes and OPTIONS requests
-    if (request.url.startsWith('/api/auth') || request.method === 'OPTIONS') {
+    if (request.url.startsWith('/api/auth') || request.url.startsWith('/api/reference') || request.method === 'OPTIONS') {
       fastify.log.info(`Skipping auth for: ${request.method} ${request.url}`);
       return;
     }
